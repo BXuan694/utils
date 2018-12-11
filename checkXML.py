@@ -17,8 +17,9 @@ for idx,line in enumerate(fn):
         break
 
 print(img)
-pic=Image.open(img)
-print("shape: ",pic.shape)
+pic=Image.open(os.path.join(rootFolder,img))
+pic=np.array(pic)
+print("shape: "+str(pic.shape))
 print(des)
 
 ymin=list()
@@ -26,21 +27,21 @@ ymax=list()
 xmin=list()
 xmax=list()
 
-with open(des,'r') as f:
+with open(os.path.join(rootFolder,des),'r') as f:
     strXML=f.read()
     treeRoot=ET.XML(strXML)
     for it in treeRoot.iter("xmin"):
         xmin.append(int(it.text))
-        print(it.tag,it.txt)
+        print(it.tag,it.text)
     for it in treeRoot.iter("ymin"):
         ymin.append(int(it.text))
-        print(it.tag,it.txt)
+        print(it.tag,it.text)
     for it in treeRoot.iter("xmax"):
-        ymin.append(int(it.text))
-        print(it.tag,it.txt)
+        xmax.append(int(it.text))
+        print(it.tag,it.text)
     for it in treeRoot.iter("ymax"):
-        ymin.append(int(it.text))
-        print(it.tag,it.txt)
+        ymax.append(int(it.text))
+        print(it.tag,it.text)
 
 for i in range(len(xmin)):
     print("bbox "+str(i)+": ",end=' ')
