@@ -27,7 +27,7 @@ xmin=list()
 xmax=list()
 
 with open(des,'r') as f:
-    xtrXML=f.read()
+    strXML=f.read()
     treeRoot=ET.XML(strXML)
     for it in treeRoot.iter("xmin"):
         xmin.append(int(it.text))
@@ -44,8 +44,9 @@ with open(des,'r') as f:
 
 for i in range(len(xmin)):
     print("bbox "+str(i)+": ",end=' ')
+    print(xmin[i],ymin[i],xmax[i],ymax[i])
 
-for num in range(len[min]):
+for num in range(len(xmin)):
     for i in range(xmin[num],xmax[num]+1):
         pic[ymin[num],i]=255
         pic[ymax[num],i]=255
