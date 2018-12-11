@@ -25,17 +25,17 @@ def readFromLmdb(lmdbPath, savePath):
         label=datum.label
         data=datum.data
         channel=datum.channels
-        print("Label: %d", label)
-        print("Data length: %d", len(data))
-        print("Channels: %d", channel)
-        print("Data width: %d", datum.width)
-        print("Data height: %d", datum.height)
+        print("Label: %d" %label)
+        print("Data length: %d" %len(data))
+        print("Channels: %d" %channel)
+        print("Data width: %d" %datum.width)
+        print("Data height: %d" %datum.height)
 
         size = datum.width*datum.height
 
         pixels1 = datum.data[0:size]
         pixels2 = datum.data[size:2*size]
-        pixels1 = datum.data[2*size:3*size]
+        pixels3 = datum.data[2*size:3*size]
 
         image1 = Image.frombytes('L', (datum.width,datum.height), pixels1)
         image2 = Image.frombytes('L', (datum.width,datum.height), pixels2)
